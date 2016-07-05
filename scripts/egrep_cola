@@ -1,0 +1,1 @@
+egrep -i -l -w -r 'certisign|digitalsign|advogados|soluti|boavista|fenacon|fenacor|imesp|icp-brasil|notarial|petrobras|prodemge|proderj|prodest|serasa|serpro|sincor|ac-boavista|serjus|certdigital|fercomercio|acertcon|doccloud|jucmg' ./ >> ../certsBrasil2

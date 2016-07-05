@@ -1,0 +1,91 @@
+#include <cstdio>
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <string>
+#include <cstdlib>
+
+#define DIR certificados/
+#define NUMCERT 1000000000000000
+
+using namespace std;
+
+int main(int argc,char** argv){
+	ifstream inCerts;
+	ofstream output;
+	
+	if(argc != 2){
+		printf("arg errados\n");
+		return 1;
+		
+	}
+
+	inCerts.open(argv[1]);
+	
+	if(!inCerts.is_open()){
+		printf("arquivo indisponivel\n");
+		return 1;
+		
+	}
+
+	inCerts.seekg(1200,inCerts.beg);
+	int achou = 0;
+	while(!achou){
+		if(inCerts.get() == 'V' && inCerts.get() == 'A' && inCerts.get() == 'L' && inCerts.get() == 'U'){
+			achou = 1;
+		}
+	}
+	
+	
+	int numCert = 1;
+	char aux;
+	int count = 0;
+	
+	
+	while(count < NUMCERT){
+		string nomeCert("cert");
+		string dirName("certificados/");
+		nomeCert += to_string(numCert);
+		dirName += nomeCert;
+		output.open(dirName.c_str());
+		
+		
+		while(inCerts.get() != '('){
+		}
+		
+		int escaped = 0;
+		int sair = 0;
+		while(!sair){
+		
+			while((aux = (char)inCerts.get()) != ',' || escaped){
+				if(!escaped && aux == ')'){
+					sair = 1;
+					break;
+				}
+				
+				//printf("escaped == %d\n\n",escaped);
+				
+				if(aux == (char)39){
+					if(escaped){
+						escaped = 0;
+					}else{
+						escaped = 1;
+					}
+				}
+				
+				output << aux;
+				
+			}
+			
+			output << endl;
+		
+		}
+		count++;
+		output.close();
+		numCert++;
+	}
+
+
+
+	return 0;
+}

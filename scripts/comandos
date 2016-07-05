@@ -1,0 +1,2 @@
+openssl x509 -in sub.class1.osmio.ca.crt -inform der -modulus -noout > mod_osmio2
+//pegar modulo e botar em arquivo

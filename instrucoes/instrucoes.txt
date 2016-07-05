@@ -1,0 +1,12 @@
+Instrucoes
+
+-Abra o diretorio certtest
+-faca um make
+-Reuna certificados em uma pasta
+-caso necessario use o egrep_cola para fazer um grep para reunir os certificados da icp brasil
+-crie um subdiretorio modDir na pasta citada
+-transfira os arquivos pegar e spript_getmodulos.sh para a pasta certificados
+-rode o script
+-entre na modDir e transfira o script_removebrancos para la, rode-o
+-rode o certTest2 com argumentos <pasta onde estao os modulos> <nome do output>
+-um relatorio sera dado dentro da pasta outputs 
